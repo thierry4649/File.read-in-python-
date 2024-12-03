@@ -1,0 +1,25 @@
+def read_and_write_file(input_filename, output_filename):
+    try:
+        with open(input_filename, 'r') as infile:
+            content = infile.read()
+            
+            # Modify the content as needed
+            modified_content = content.upper()  # Example modification: convert to uppercase
+            
+        with open(output_filename, 'w') as outfile:
+            outfile.write(modified_content)
+        
+        print(f"Content has been successfully read from {input_filename} and written to {output_filename}.")
+    
+    except FileNotFoundError:
+        print(f"Error: The file {input_filename} does not exist.")
+    
+    except IOError:
+        print(f"Error: The file {input_filename} cannot be read.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    input_filename = input("Please enter the name of the file to read: ")
+    output_filename = input("Please enter the name of the file to write: ")
+    read_and_write_file(input_filename, output_filename)
